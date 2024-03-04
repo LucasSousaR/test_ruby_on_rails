@@ -1,0 +1,82 @@
+
+<p style="color: green"><%= notice %></p>
+<style>
+    .input_width {
+        width: 100%;
+    }
+</style>
+<div data-controller="context" class="container mt-5">
+  <div class="card card-default">
+    <div class="card-body">
+
+      <div class="row  col-xl-12">
+        <div class="bg-content flex-1 col-xl-12"  style="margin-right: 24px; ">
+          <div class="title">
+            <div style="display: flex; justifyContent: 'space-between'">
+              ADICIONAR MUNICIPIO
+            </div>
+          </div>
+          <hr class="d-print-none">
+
+          <%= simple_form_for(@municipio) do |f| %>
+            <div class="row">
+
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Nome do municipio</label>
+                  <input class="form-control" value="" type="text" id="nome"  name="nome" required>
+                </div>
+              </div>
+
+            </div>
+
+
+            <hr class="d-print-none">
+            <div class="col-xl-12">
+              <div class="clearfix"></div>
+              <div class="box-header pt-0 pl-0 ms-0 mb-4 mt-4 border-bottom-0 responsive-header">
+                <h4 class="box-title fs-22"></h4>
+                <div class="card-options">
+                  <%= link_to 'Voltar', municipios_path , class: 'btn btn-secondary' %>
+                  <%= f.submit 'Adicionar', class: 'btn btn-primary' %>
+                </div>
+              </div>
+
+
+
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<%= content_for(:vendor_js_area) do %>
+
+<%end %>
+<script>
+    $(function () {
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Proximo',
+                prevText: 'Anterior'
+            });
+
+
+
+        });
+
+    });
+
+</script>
+
+
+

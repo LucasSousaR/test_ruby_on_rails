@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+
+<% if @municipe.photo.attached? %>
+  <p><%= image_tag @municipe.photo.variant(resize: "200x200") %></p> <!-- Tamanho pequeno -->
+  <p><%= image_tag @municipe.photo.variant(resize: "400x400") %></p> <!-- Tamanho médio -->
+  <p><%= image_tag @municipe.photo.variant(resize: "600x600") %></p> <!-- Tamanho grande -->
+  <!-- Outros tamanhos de imagem aqui -->
+<% end %>
+<%= link_to 'Edit', edit_municipe_path(@municipe) %> |
+<%= link_to 'Back', municipes_path %>

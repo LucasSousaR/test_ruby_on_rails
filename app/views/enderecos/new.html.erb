@@ -1,0 +1,11 @@
+<h1>Novo Endereço</h1>
+<%= form_for @endereco do |f| %>
+  <div>
+    <%= f.label :cep %>
+    <%= f.text_field :cep %>
+  </div>
+  <!-- Adicione os campos restantes do Endereço aqui -->
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

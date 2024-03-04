@@ -1,0 +1,433 @@
+
+<p style="color: green"><%= notice %></p>
+<style>
+    #nameError {
+        display: none;
+        font-size: 0.8em;
+    }
+
+    #nameError.visible {
+        display: block;
+    }
+
+    input.invalid {
+        border-color: red;
+    }
+</style>
+
+
+<div data-controller="context-menu" class="container mt-5">
+  <div class="card card-default">
+    <div class="card-body">
+
+        <div class="row  col-xl-12">
+          <div class="bg-content flex-1 col-xl-12"  style="margin-right: 24px; ">
+            <div class="title">
+              <div style="display: flex; justifyContent: 'space-between'">
+                ADICIONAR MUNICIPE
+              </div>
+            </div>
+            <hr class="d-print-none">
+
+            <%= simple_form_for(@municipe) do |f| %>
+              <div class="row">
+
+
+                <div class="col-sm-12">
+                  <div class="form-group">
+                    <label for="foto">Upload Foto</label>
+                    <input class="form-control" accept="image/*" id="foto" name="foto" type="file" required>
+                    <small id="fileHelp" class="form-text text-muted">Por favor, selecione uma imagem para enviar.</small>
+                    <div class="invalid-feedback">Por favor, selecione uma imagem.</div>
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="form-group">
+                    <label>Nome Completo</label>
+                    <input class="form-control" value="" type="text" id="nome_completo"  name="nome_completo" required>
+                    <div class="invalid-feedback">O campo não pode ser vazio</div>
+                  </div>
+                </div>
+
+                <div class="col-3">
+                  <div class="form-group">
+                    <label>Cpf</label>
+                    <input class="form-control" value="" type="text" id="cpf"  name="cpf" required>
+                    <div class="invalid-feedback">O CPF é inválido</div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>CNS</label>
+                    <input class="form-control" value="" type="text" id="cns"  name="cns" required>
+                    <div class="invalid-feedback">O CNS é inválido</div>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Telefone Celular</label>
+                    <input class="form-control" value="" type="text" id="telefone"  name="telefone" required>
+                    <div class="invalid-feedback">O telefone é inválido</div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" value="" type="email" id="email"  name="email" required>
+                    <div class="invalid-feedback">O campo não pode ser vazio</div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Data de Nascimento</label>
+                    <div class="cal-icon">
+                      <input class="form-control " id="data_nascimento"  name="data_nascimento" type="date">
+                      <div class="invalid-feedback">A data de nascimento é inválida</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <div  class="col-sm-12">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox"  name="status" id="status">
+                    <label class="form-check-label fs-14" for="status">
+                      Ativo?
+                    </label>
+                  </div>
+                </div>
+
+
+                <br>
+                <br>
+
+                <div>Endereço</div>
+
+                <br>
+                <br>
+                <div class="form-group">
+                  <label for="municipio_id">Município</label>
+                  <select class="form-control" id="municipio_id" name="municipio_id" required>
+                    <option value="" selected disabled hidden>Selecione o Município</option>
+                    <%  Municipio.all.each do |municipio| %>
+                      <option value="<%= municipio.id %>"><%= municipio.nome %></option>
+                    <% end %>
+                  </select>
+                  <div class="invalid-feedback">Por favor, selecione um município.</div>
+                </div>
+                <div class="col-sm-3">
+                <div class="form-group">
+                  <label for="cep">CEP</label>
+                  <input class="form-control" value="" type="text" id="cep" name="cep" required>
+                  <div class="invalid-feedback">O CEP é inválido</div>
+                </div>
+              </div>
+
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label>Logradouro</label>
+                    <input class="form-control" value="" type="text" id="logradouro"  name="logradouro" required>
+                    <div class="invalid-feedback">O logradouro é inválido</div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Complemento</label>
+                    <input class="form-control" value="" type="text" id="complemento"  name="complemento" required>
+                    <div class="invalid-feedback">O Complemento é inválido</div>
+
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Bairro</label>
+                    <input class="form-control" value="" type="text" id="bairro"  name="bairro" required>
+                    <div class="invalid-feedback">O Bairro é inválido</div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Cidade</label>
+                    <input class="form-control" value="" type="text" id="cidade"  name="cidade" required>
+                    <div class="invalid-feedback">A Cidade é inválido</div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Uf </label>
+                    <input class="form-control" value="" type="text" id="uf"  name="uf" required>
+                    <div class="invalid-feedback">A UF é inválido</div>
+                  </div>
+                </div>
+                <div class="col-sm-3">
+                  <div class="form-group">
+                    <label>Código IBGE </label>
+                    <input class="form-control" value="" type="text" id="codigo_ibge"  name="codigo_ibge" >
+                  </div>
+                </div>
+
+              </div>
+
+              <p id="demo"></p>
+
+              <hr class="d-print-none">
+              <div class="col-xl-12">
+                <div class="clearfix"></div>
+                <div class="box-header pt-0 pl-0 ms-0 mb-4 mt-4 border-bottom-0 responsive-header">
+                  <h4 class="box-title fs-22"></h4>
+                  <div class="card-options">
+                    <%= link_to 'Voltar', municipes_path, class: 'btn btn-secondary' %>
+                    <%= f.submit 'Adicionar', id: 'submit' , class: 'btn btn-primary', disabled: (false unless @municipe) %>
+                  </div>
+                </div>
+
+
+
+              </div>
+            <% end %>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+</div>
+<%= content_for(:vendor_js_area) do %>
+
+<%end %>
+<script>
+    $(function () {
+
+
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                nextText: 'Proximo',
+                prevText: 'Anterior'
+            });
+
+
+
+        });
+
+
+    });
+
+    // Função para validar o formato do email
+    function isValidEmail(email) {
+        // Utiliza uma expressão regular para validar o formato do email
+        var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    }
+    function validarCPF(cpf) {
+        cpf = cpf.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+        if (cpf.length !== 11 || !/[0-9]{11}/.test(cpf)) return false; // Verifica se o CPF tem 11 dígitos numéricos
+
+        // Calcula o primeiro dígito verificador
+        var soma = 0;
+        for (var i = 0; i < 9; i++) {
+            soma += parseInt(cpf.charAt(i)) * (10 - i);
+        }
+        var resto = soma % 11;
+        var digitoVerificador1 = resto < 2 ? 0 : 11 - resto;
+
+        // Verifica se o primeiro dígito verificador está correto
+        if (parseInt(cpf.charAt(9)) !== digitoVerificador1) return false;
+
+        // Calcula o segundo dígito verificador
+        soma = 0;
+        for (var i = 0; i < 10; i++) {
+            soma += parseInt(cpf.charAt(i)) * (11 - i);
+        }
+        resto = soma % 11;
+        var digitoVerificador2 = resto < 2 ? 0 : 11 - resto;
+
+        // Verifica se o segundo dígito verificador está correto
+        if (parseInt(cpf.charAt(10)) !== digitoVerificador2) return false;
+
+        return true; // CPF válido
+    }
+
+    function validarCNS(cns) {
+        cns = cns.replace(/[^\d]+/g, ''); // Remove caracteres não numéricos
+        if (cns.length !== 15 || !/[0-9]{15}/.test(cns)) return false; // Verifica se o CNS tem 15 dígitos numéricos
+
+        var soma = 0;
+        var peso = 15;
+        for (var i = 0; i < 15; i++) {
+            soma += parseInt(cns.charAt(i)) * peso;
+            peso--;
+        }
+
+        var resto = soma % 11;
+        var digitoVerificador = 11 - resto;
+
+        // Se o resto for 0 ou 1, o dígito verificador deve ser 0
+        if (resto === 0 || resto === 1) {
+            return parseInt(cns.charAt(14)) === 0;
+        }
+
+        //return parseInt(cns.charAt(14)) === digitoVerificador;
+        return true;
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.querySelector('form');
+
+        form.addEventListener("submit", function(event) {
+            event.preventDefault(); // Impede o envio padrão do formulário
+
+            var foto = $('#foto').val();
+            var uf = $('#uf').val();
+            var cidade = $('#cidade').val();
+            var bairro = $('#bairro').val();
+            var complemento = $('#complemento').val();
+            var logradouro = $('#logradouro').val();
+            var cep = $('#cep').val();
+            var dataNascimento = $('#data_nascimento').val();
+            var email = $('#email').val();
+            var municipioId = $('#municipio_id').val();
+            var telefone = $('#telefone').val();
+            var cns = $('#cns').val();
+            var nome_completo = $('#nome_completo').val();
+            var cpf = $('#cpf').val();
+
+            var isValid = true; // Variável para rastrear a validade do formulário
+
+            // Validação para o campo CPF
+            if (cpf.trim() === '' || !validarCPF(cpf)) {
+                $('#cpf').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#cpf').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de foto
+            if (foto.trim() === '') {
+                $('#foto').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#foto').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de nome completo
+            if (nome_completo.trim() === '') {
+                $('#nome_completo').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#nome_completo').removeClass('is-invalid');
+            }
+
+            // Validação para o campo CNS
+            if (cns.trim() === '' || !validarCNS(cns)) {
+                $('#cns').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#cns').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de telefone
+            if (telefone.trim() === '') {
+                $('#telefone').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#telefone').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de email
+            if (email.trim() === '' || !isValidEmail(email)) {
+                $('#email').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#email').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de data de nascimento
+            if (dataNascimento.trim() === '') {
+                $('#data_nascimento').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#data_nascimento').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de CEP
+            if (cep.trim() === '') {
+                $('#cep').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#cep').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de logradouro
+            if (logradouro.trim() === '') {
+                $('#logradouro').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#logradouro').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de complemento
+            if (complemento.trim() === '') {
+                $('#complemento').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#complemento').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de bairro
+            if (bairro.trim() === '') {
+                $('#bairro').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#bairro').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de cidade
+            if (cidade.trim() === '') {
+                $('#cidade').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#cidade').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de UF
+            if (uf.trim() === '') {
+                $('#uf').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#uf').removeClass('is-invalid');
+            }
+
+            // Validação para o campo de município
+            if (municipioId.trim() === '') {
+                $('#municipio_id').addClass('is-invalid');
+                isValid = false;
+            } else {
+                $('#municipio_id').removeClass('is-invalid');
+            }
+
+            // Se todos os campos forem válidos, permita o envio do formulário
+            if (isValid) {
+                submitForm(form); // Envie o formulário
+            }
+        });
+
+        function submitForm(form) {
+            const submitFormFunction = Object.getPrototypeOf(form).submit;
+            submitFormFunction.call(form);
+        }
+    });
+
+</script>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inputmask/5.0.6/jquery.inputmask.min.js"></script>

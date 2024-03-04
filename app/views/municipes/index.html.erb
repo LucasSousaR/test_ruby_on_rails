@@ -1,0 +1,74 @@
+<p style="color: green"><%= notice %></p>
+<div data-controller="context-menu" class="container mt-5">
+  <div class="card card-default">
+    <div class="card-body">
+      <h1> Listagem de Municipes</h1>
+
+      <hr class="d-print-none">
+
+      <div class=" col-xl-12 float-left">
+        <div class="  float-left">
+          <a href="<%= new_municipe_path %>" >
+            <button type="button" style="margin-top: 15px; margin-left: 15px; margin-right: 15px; " class=" btn btn-success mb-1">Novo Cadastro</button>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <br>
+    <div class="card card-default">
+      <div class="card-body">
+        <%if @items.present?  %>
+          <table class="table table-vcenter text-nowrap table-bordered dataTable no-footer" id="task-profile" role="grid">
+            <thead>
+            <tr class="top">
+              <th class="border-bottom-0 text-center sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1" style="width: 26.6562px;">No</th>
+              <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1" >nome_completo</th>
+              <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1" >cpf</th>
+              <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1" >email</th>
+              <th class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="1" colspan="1" >status</th>
+              <th colspan="2" class="border-bottom-0 sorting fs-14 font-w500" tabindex="0" aria-controls="task-profile" rowspan="2" >Ação</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <% @items.each do |item|  %>
+              <tr class="odd">
+                <td class="text-center"><%= item.id %></td>
+                <td>
+                   <span><%= item.nome_completo %></span>
+                </td>
+                <td>
+                   <span><%= item.cpf %></span>
+                </td>
+                <td>
+                   <span><%= item.email %></span>
+                </td>
+                <td>
+                    <% if item.status == true%>
+                     p> Ativo</p>
+                   <%else %>
+                     <p> Inativo</p>
+                   <%end %>
+                </td>
+
+                <td><%= link_to 'Edit', edit_municipe_path(item) %></td>
+              </tr>
+            <% end %>
+
+
+            </tbody>
+          </table>
+        <%else %>
+          <div> Nenhum resultado</div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
